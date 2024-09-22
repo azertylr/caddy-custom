@@ -1,4 +1,4 @@
-Tname: Build caddy-custom
+name: Build caddy-custom
 
 # Controls when the action will run
 on:
