@@ -7,14 +7,40 @@ on:
     - cron: '0 0 1 * *'  # runs at 00:00 on the first day of every month
   push:
     branches: main
-
+ 
+# Jobs to run once the workflow is triggered
 jobs:
-
-  build:
-
+  metadata:
     runs-on: ubuntu-latest
-
+    outputs:
+      #version: ${{ steps.version.outputs.version }}
+      #labels: ${{ steps.metadata.outputs.labels }}
+      #tags: ${{ steps.metadata.outputs.tags }}
+      version: 2.8.4
+      labels: 2.8.4
+      tags: 2.8.4,latest
+      platforms: linux/amd64,linux/arm64
+      
+  build:
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+    
+    - name: Log in to the Container registry
+      uses: docker/login-action@v3
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ github.token }}
+
+          
+ #   - name: Build the Docker image
+ #     run: docker build . --file Dockerfile --tag caddy-custom:latest
+
+    - name: Build and push Docker images
+      uses: docker/build-push-action@v6.7.0
+      with:
+        push: true
+        tags: ${{ needs.metadata.outputs.tags }}
+        labels: ${{ needs.metadata.outputs.labels }}
+        platforms: ${{ needs.metadata.outputs.platforms }}
