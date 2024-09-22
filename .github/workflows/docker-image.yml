@@ -14,7 +14,8 @@ env:
   VERSION: 2.8.4
   LABELS: 2.8.4
   TAGS: 2.8.4,latest
-  PLATFORMS: linux/amd64,linux/arm64
+  PLATFORMS: linux/amd64
+ # PLATFORMS: linux/amd64,linux/arm64
  
 # Jobs to run once the workflow is triggered
 jobs:
