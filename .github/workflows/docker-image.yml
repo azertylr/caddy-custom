@@ -38,6 +38,6 @@ jobs:
       uses: docker/build-push-action@v6.7.0
       with:
         push: true
-        tags: TAGS
-        labels: LABELS
-        platforms: PLATFORMS
+        tags: $TAGS
+        labels: $LABELS
+        platforms: $PLATFORMS
