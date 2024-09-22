@@ -3,8 +3,8 @@ name: Build caddy-custom
 # Controls when the action will run
 on:
   workflow_dispatch:  # allows to run the workflow manually from the Actions tab
-  schedule:
-    - cron: '14 15 1 * *'  # runs at 00:00 on the first day of every month
+  #schedule:
+  #  - cron: '14 15 1 * *'  # runs at 00:00 on the first day of every month
   push:
     branches: main
 
@@ -58,5 +58,3 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
           platforms: ${{ env.PLATFORMS }}certificate
-        # against the sigstore community Fulcio instance.
-        run: echo "${TAGS}" | xargs -I {} cosign sign --yes {}@${DIGEST}
