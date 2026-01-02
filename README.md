@@ -2,6 +2,6 @@
 
 caddy2 with:
 
-- github.com/hslatman/caddy-crowdsec-bouncer
-- github.com/caddy-dns/ovh
-- github.com/oltdaniel/caddy-ipinfo-free
+- [github.com/hslatman/caddy-crowdsec-bouncer](github.com/hslatman/caddy-crowdsec-bouncer)
+- [github.com/caddy-dns/ovh](github.com/caddy-dns/ovh)
+- [github.com/oltdaniel/caddy-ipinfo-free](github.com/oltdaniel/caddy-ipinfo-free)
