@@ -59,3 +59,11 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
           platforms: ${{ env.PLATFORMS }}
+          
+      - name: Delete old image versions
+        uses: actions/delete-package-versions@v5
+        with:
+          package-name: 'caddy-custom'
+          package-type: 'container'
+          min-versions-to-keep: 2
+          delete-only-untagged-versions: 'true'
