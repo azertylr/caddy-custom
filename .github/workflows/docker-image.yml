@@ -47,6 +47,14 @@ jobs:
           tags: |
             type=raw,value=latest
             type=raw,value=2.11.2
+            
+      - name: Delete old image versions
+        uses: actions/delete-package-versions@v5
+        with:
+          package-name: 'caddy-custom'
+          package-type: 'container'
+          min-versions-to-keep: 2
+          delete-only-untagged-versions: 'true'
 
       - name: Build and push Docker image
         id: build-and-push
@@ -60,10 +68,3 @@ jobs:
           cache-to: type=gha,mode=max
           platforms: ${{ env.PLATFORMS }}
           
-      - name: Delete old image versions
-        uses: actions/delete-package-versions@v5
-        with:
-          package-name: 'caddy-custom'
-          package-type: 'container'
-          min-versions-to-keep: 2
-          delete-only-untagged-versions: 'true'
