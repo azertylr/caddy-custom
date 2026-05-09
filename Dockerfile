@@ -3,7 +3,8 @@ FROM caddy:2-builder AS builder
 RUN xcaddy build \
     --with github.com/hslatman/caddy-crowdsec-bouncer/http \
     --with github.com/caddy-dns/ovh \
-    --with github.com/oltdaniel/caddy-ipinfo-free
+    --with github.com/oltdaniel/caddy-ipinfo-free \
+    --with github.com/sablierapp/sablier-caddy-plugin
 
 FROM caddy:2
 
